@@ -1,15 +1,23 @@
 const express = require('express');
 const app = express();
 
-app.get('/users',(req,res)=>{
+app.post('/users',(req,res)=>{
     res.send({FirstName:"Deeksha",LastName:"Rajput"})
 })
 app.delete('/users',(req,res)=>{
     res.send('Delete successfully')
 });
-app.post('/users',(req,res)=>{
-    res.send("update successfully.")
-})
+app.get('/users',(req,res,next)=>{
+    console.log('1st response');
+    next();
+    // res.send("update successfully.")
+},
+(req,res,next)=>{
+     console.log('2nd response');
+   res.send("2nd response")
+
+}
+)
 
 app.use('/test',(req,res)=>{
     res.send("test from server")
