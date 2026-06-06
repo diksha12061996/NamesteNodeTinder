@@ -18,4 +18,12 @@ const validateSignUpData = (req) => {
         return res.status(400).send(`Gender must be one of the following: ${allowedGenders.join(', ')}`);
     }
 }
-module.exports = { validateSignUpData }
+const validateEditProfileData = (req) => {
+    const allowedEditFields = ["Name", "Email", "Gender", "Age"];
+    const isEdidAllowed = Object.keys(req.body).every((field) =>
+        allowedEditFields.includes(field)
+    )
+    return isEdidAllowed;
+}
+
+module.exports = { validateSignUpData, validateEditProfileData }
