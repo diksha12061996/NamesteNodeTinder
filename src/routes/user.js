@@ -34,7 +34,7 @@ userRouter.get('/user/connections', userAuth, async (req, res) => {
     }
 });
 
-userRouter.get('/user/feed', userAuth, async (req, res) => {
+userRouter.get('/feed', userAuth, async (req, res) => {
     try {
         let conReqQry = `
             select * from Users u
